@@ -32,7 +32,7 @@ check_alpine_release_file() {
 
 run() {
 
-    wget -O "$INSTALLER_DOWNLOAD_PATH" -q "$DT_ENDPOINT/$INSTALLER_URL_SUFFIX?Api-Token=$DT_API_TOKEN&flavor=$DT_FLAVOR&include=$DT_INCLUDE"
+    wget -O "$INSTALLER_DOWNLOAD_PATH" -q "$DT_ENDPOINT/$INSTALLER_URL_SUFFIX?flavor=$DT_FLAVOR&include=$DT_INCLUDE" --header="Authorization: Api-Token $DT_API_TOKEN"
     sh "$INSTALLER_DOWNLOAD_PATH"
 
     # Inject variable into the proccess and run the actual application proccess
